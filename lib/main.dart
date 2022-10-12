@@ -57,7 +57,7 @@ class _InicioState extends State<Inicio> {
       padding: EdgeInsets.symmetric(horizontal: 100, vertical: 5),
       child: TextField(
         obscureText: true,
-        decoration: InputDecoration(hintText: "contrasnia admin"),
+        decoration: InputDecoration(hintText: "contrasenia admin"),
       ),
     );
   }
