@@ -28,7 +28,42 @@ class _InicioState extends State<Inicio> {
       appBar: AppBar(
         title: Text("AppBeca"),
       ),
-      body: Center(child: Text("Contenido")),
+      body: Center(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[nombre(), campoU(), campoC(), btnEntrar()],
+      )),
     );
+  }
+
+  Widget nombre() {
+    return Text(
+      "Iniciar secion",
+      style: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold),
+    );
+  }
+
+  Widget campoU() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 100, vertical: 5),
+      child: TextField(
+        decoration: InputDecoration(hintText: "usuario admin"),
+      ),
+    );
+  }
+
+  Widget campoC() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 100, vertical: 5),
+      child: TextField(
+        obscureText: true,
+        decoration: InputDecoration(hintText: "contrasnia admin"),
+      ),
+    );
+  }
+
+  Widget btnEntrar() {
+    return FloatingActionButton(
+        focusColor: Colors.blue, onPressed: () {}, child: Text("Entrar"));
   }
 }
