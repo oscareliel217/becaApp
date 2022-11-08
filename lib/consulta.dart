@@ -10,8 +10,9 @@ class consulta extends StatefulWidget {
 
 class consul extends State<consulta> {
   @override
+  String? gender;
+  bool ss = false;
   Widget build(BuildContext context) {
-    String? gender;
     return Scaffold(
       backgroundColor: Color(0xfff2eadf),
       appBar: AppBar(
@@ -22,44 +23,10 @@ class consul extends State<consulta> {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          nombre(),
+          titulo(),
           Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
-                "SELECCIONA LA  MODALIDAD DE BUSQUEDA",
-                style: TextStyle(fontSize: 18),
-              ),
-              Divider(),
-              RadioListTile(
-                title: Text("CURP"),
-                value: "curp",
-                groupValue: gender,
-                onChanged: (value) {
-                  setState(() {
-                    gender = value.toString();
-                  });
-                },
-              ),
-              RadioListTile(
-                title: Text("ID FAMILIA"),
-                value: "idf",
-                groupValue: gender,
-                onChanged: (value) {
-                  setState(() {
-                    gender = value.toString();
-                  });
-                },
-              ),
-              RadioListTile(
-                title: Text("REGION"),
-                value: "region",
-                groupValue: gender,
-                onChanged: (value) {
-                  setState(() {
-                    gender = value.toString();
-                  });
-                },
-              ),
               SizedBox(
                 width: 300,
                 child: TextField(
@@ -68,6 +35,37 @@ class consul extends State<consulta> {
                       prefixIcon: Icon(Icons.search)),
                 ),
               ),
+              FloatingActionButton(
+                onPressed: () {},
+                child: Text(
+                  "buscar",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              ElevatedButton.icon(
+                onPressed: () {
+                  setState(() {
+                    ss = !ss;
+                  });
+                },
+                icon: const Icon(Icons.add_circle),
+                label: Text("busqueda avanzada"),
+              ),
+              Visibility(
+                visible: ss,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      sareId(),
+                      nombre(),
+                      curp(),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.search),
+                        color: Color(0xff595756),
+                      )
+                    ]),
+              ),
             ],
           ),
         ],
@@ -75,18 +73,55 @@ class consul extends State<consulta> {
     );
   }
 
-  Widget nombre() {
+  Widget busque() {
+    return FloatingActionButton(
+      onPressed: () {},
+      child: Text(
+        "buscar",
+        style: TextStyle(color: Colors.white),
+      ),
+    );
+  }
+
+  Widget titulo() {
     return Text(
-      "BUSCAR POR",
+      "BUSCAR POR FAMILIA ID",
       style: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold),
     );
   }
 
-  Widget campoU() {
+  Widget sareId() {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 100, vertical: 5),
       child: TextField(
-        decoration: InputDecoration(hintText: "usuario admin"),
+        decoration: InputDecoration(
+            hintText: "por sare id",
+            border: OutlineInputBorder(),
+            prefixIcon: Icon(Icons.search)),
+      ),
+    );
+  }
+
+  Widget nombre() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 100, vertical: 5),
+      child: TextField(
+        decoration: InputDecoration(
+            hintText: "por nombre",
+            border: OutlineInputBorder(),
+            prefixIcon: Icon(Icons.search)),
+      ),
+    );
+  }
+
+  Widget curp() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 100, vertical: 5),
+      child: TextField(
+        decoration: InputDecoration(
+            hintText: "por curp",
+            border: OutlineInputBorder(),
+            prefixIcon: Icon(Icons.search)),
       ),
     );
   }

@@ -15,6 +15,7 @@ class datos extends State<logins> {
   String pas = '';
   String usu2 = 'admin';
   String pas2 = 'admin';
+  bool ss = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +27,12 @@ class datos extends State<logins> {
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[nombre(), campoU(), campoC(), btnEntrar()],
+        children: <Widget>[
+          nombre(),
+          campoU(),
+          campoC(),
+          btnEntrar(),
+        ],
       )),
     );
   }
@@ -43,7 +49,10 @@ class datos extends State<logins> {
       padding: EdgeInsets.symmetric(horizontal: 100, vertical: 5),
       child: TextField(
         controller: usuario,
-        decoration: InputDecoration(hintText: "usuario admin"),
+        decoration: InputDecoration(
+          hintText: "usuario admin",
+          border: OutlineInputBorder(),
+        ),
       ),
     );
   }
@@ -54,7 +63,8 @@ class datos extends State<logins> {
       child: TextFormField(
         controller: password,
         obscureText: true,
-        decoration: InputDecoration(hintText: "contrasenia admin"),
+        decoration: InputDecoration(
+            hintText: "contrasenia admin", border: OutlineInputBorder()),
       ),
     );
   }
@@ -65,7 +75,7 @@ class datos extends State<logins> {
         onPressed: () {
           usu = usuario.text;
           pas = password.text;
-          if (usu == usu2) {
+          if (usu == usu2 && pas == pas2) {
             Navigator.push(context,
                 MaterialPageRoute(builder: (context) => const admin()));
           } else {
