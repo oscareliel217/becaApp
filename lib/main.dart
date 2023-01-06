@@ -1,5 +1,7 @@
-import 'package:becapv/consulta.dart';
-import 'package:becapv/loginAdmin.dart';
+import 'package:becapv/pages/consulta.dart';
+import 'package:becapv/pages/homepage.dart';
+import 'package:becapv/rutasinfo/acercade.dart';
+import 'package:becapv/rutasinfo/contacto.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MiApp());
@@ -12,57 +14,11 @@ class MiApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "BECAS",
-      home: pagIni(),
-    );
-  }
-}
-
-class pagIni extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xfff2eadf),
-      appBar: AppBar(
-        title: Text("AppBeca"),
-        backgroundColor: Color(0xff255946),
-      ),
-      body: Center(
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            new SizedBox(
-              child: Image.asset('assets/beni.jpg'),
-            ),
-            new OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                  backgroundColor: Color(0xff255946), primary: Colors.white),
-              child: Text("USUARIO ADMIN"),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const logins()));
-              },
-            ),
-            new OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                  backgroundColor: Color(0xff255946), primary: Colors.white),
-              child: Text("SOLO CONSULTA"),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const consulta()));
-              },
-            ),
-          ],
-        ),
-        /* child: OutlinedButton(
-          style: OutlinedButton.styleFrom(
-              backgroundColor: Color(0xff255946), primary: Colors.white),
-          child: Text("USUARIO ADMIN"),
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const logins()));
-          },
-        ),*/
-      ),
+      home: homepage(),
+      routes: {
+        '/acercade': (context) => const acercade(),
+        '/contacto': (context) => const contacto()
+      },
     );
   }
 }

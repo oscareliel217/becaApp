@@ -18,6 +18,15 @@ class agregar extends State<admin> {
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          FloatingActionButton(
+            onPressed: () {},
+            child: Icon(
+              Icons.archive,
+              color: Colors.black,
+            ),
+          ),
+        ],
       )),
     );
   }

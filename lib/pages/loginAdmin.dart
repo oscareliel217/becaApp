@@ -1,4 +1,4 @@
-import 'package:becapv/admin.dart';
+import 'package:becapv/pages/admin.dart';
 import 'package:flutter/material.dart';
 
 class logins extends StatefulWidget {
@@ -29,8 +29,17 @@ class datos extends State<logins> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           nombre(),
+          SizedBox(
+            height: 80,
+          ),
           campoU(),
+          SizedBox(
+            height: 20,
+          ),
           campoC(),
+          SizedBox(
+            height: 90,
+          ),
           btnEntrar(),
         ],
       )),
@@ -39,7 +48,7 @@ class datos extends State<logins> {
 
   Widget nombre() {
     return Text(
-      "Iniciar seción",
+      "INICIAR SECION",
       style: TextStyle(fontSize: 35.0, fontWeight: FontWeight.bold),
     );
   }
@@ -52,6 +61,7 @@ class datos extends State<logins> {
         decoration: InputDecoration(
           hintText: "usuario admin",
           border: OutlineInputBorder(),
+          prefixIcon: Icon(Icons.person),
         ),
       ),
     );
@@ -64,7 +74,9 @@ class datos extends State<logins> {
         controller: password,
         obscureText: true,
         decoration: InputDecoration(
-            hintText: "contrasenia admin", border: OutlineInputBorder()),
+            prefixIcon: Icon(Icons.lock),
+            hintText: "contrasenia admin",
+            border: OutlineInputBorder()),
       ),
     );
   }
